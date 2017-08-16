@@ -25,36 +25,55 @@ import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.List;
 
+import butterknife.ButterKnife;
+import butterknife.InjectView;
+
 /**
  * Created by admin on 2017/8/8.
  */
 
 public class HomeFragment extends BaseFragment {
 
-    private MarqueeView marqueeView;
+    @InjectView(R.id.marqueeView)
+    MarqueeView marqueeView;
+    @InjectView(R.id.vp)
+    ViewPager vp;
+    @InjectView(R.id.iv_touch_lock)
+    ImageView ivTouchLock;
+    @InjectView(R.id.iv_open_door_permission)
+    ImageView ivOpenDoorPermission;
+    @InjectView(R.id.iv_rent_situation)
+    ImageView ivRentSituation;
+    @InjectView(R.id.iv_pay_rent)
+    ImageView ivPayRent;
+    @InjectView(R.id.iv_safety_monitoring)
+    ImageView ivSafetyMonitoring;
+    @InjectView(R.id.iv_xiaoqu)
+    ImageView ivXiaoqu;
+    @InjectView(R.id.tv_village_name)
+    TextView tvVillageName;
+    @InjectView(R.id.gridView)
+    MyGridViews gridView;
+
     private View view;
     ArrayList<String> data = new ArrayList<>();
     ArrayList<View> views = new ArrayList<>();
-    private ViewPager vp;
-    private List<String> roomNumber =new ArrayList<>();
-    private List<String> rentSituatoin =new ArrayList<>();
-    private ArrayList<ImageView> list =new ArrayList<>();
-    private MyGridViews gridView;
+    private List<String> roomNumber = new ArrayList<>();
+    private List<String> rentSituatoin = new ArrayList<>();
+    private ArrayList<ImageView> list = new ArrayList<>();
+
     private ImageHandler handler = new ImageHandler(new WeakReference<HomeFragment>(HomeFragment.this));
-    private static boolean isFrist=false;
-    private int pageCount;
-    private ImageView imageView;
-    private ArrayList<ImageView> dotsList;
-//    private LinearLayout mLinearLayout;
-//    private View vRepoint;
-    private int diatance;
+    private static boolean isFrist = false;
+
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        if (view==null){
-            view = inflater.inflate(R.layout.fragment_home,container,false);
+        if (view == null) {
+            view = inflater.inflate(R.layout.fragment_home, container, false);
         }
-        isFrist =true;
+        ButterKnife.inject(this, view);
+        isFrist = true;
         initdata();
         initView();
         setGridViewClick();
@@ -64,7 +83,6 @@ public class HomeFragment extends BaseFragment {
         return view;
 
     }
-
 
 
     private void setViewPager() {
@@ -77,18 +95,20 @@ public class HomeFragment extends BaseFragment {
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
 
             }
+
             @Override
             public void onPageSelected(int position) {
                 handler.sendMessage(Message.obtain(handler,
                         ImageHandler.MSG_PAGE_CHANGED,
-                        position,0));
+                        position, 0));
 
 
             }
+
             //复写该方法实现轮播效果的暂停和恢复
             @Override
             public void onPageScrollStateChanged(int state) {
-                switch (state){
+                switch (state) {
                     case ViewPager.SCROLL_STATE_DRAGGING:
                         handler.sendEmptyMessage(ImageHandler.MSG_KEEP_SILENT);
                         break;
@@ -101,7 +121,7 @@ public class HomeFragment extends BaseFragment {
             }
 
         });
-        vp.setCurrentItem(Integer.MAX_VALUE/2);
+        vp.setCurrentItem(Integer.MAX_VALUE / 2);
 
         handler.sendEmptyMessageDelayed(ImageHandler.MSG_UPDATE_IMAGE, ImageHandler.MSG_DELAY);
     }
@@ -119,22 +139,18 @@ public class HomeFragment extends BaseFragment {
     }
 
     private void setGridViewClick() {
-        gridView.setAdapter(new GridViewAdapter(getActivity(),roomNumber,rentSituatoin));
+        gridView.setAdapter(new GridViewAdapter(getActivity(), roomNumber, rentSituatoin));
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Toast.makeText(getActivity(),"当前房号为："+roomNumber.get(i).toString()
-                        +",出租情况："+rentSituatoin.get(i).toString(),Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), "当前房号为：" + roomNumber.get(i).toString()
+                        + ",出租情况：" + rentSituatoin.get(i).toString(), Toast.LENGTH_SHORT).show();
             }
         });
     }
 
     //初始化控件
     private void initView() {
-        gridView = ((MyGridViews) view.findViewById(R.id.gridView));
-        marqueeView = ((MarqueeView) view.findViewById(R.id.marqueeView));
-        vp = ((ViewPager) view.findViewById(R.id.vp));
-
         setView();
         marqueeView.setViews(views);
         marqueeView.setOnItemClickListener(new MarqueeView.OnItemClickListener() {
@@ -159,7 +175,7 @@ public class HomeFragment extends BaseFragment {
             ((LinearLayout) view.findViewById(R.id.ll)).setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Toast.makeText(getContext(),"通知："+data.get(position).toString(),Toast.LENGTH_LONG).show();
+                    Toast.makeText(getContext(), "通知：" + data.get(position).toString(), Toast.LENGTH_LONG).show();
                 }
             });
             views.add(view);
@@ -180,15 +196,15 @@ public class HomeFragment extends BaseFragment {
         marqueeView.stopFlipping();
     }
 
-    private int[] getImages(){
-        return new int[]{R.mipmap.safety_monitoring,R.mipmap.banner1,R.mipmap.massage,R.mipmap.lock};
+    private int[] getImages() {
+        return new int[]{R.mipmap.safety_monitoring, R.mipmap.banner1, R.mipmap.massage, R.mipmap.lock};
     }
 
 
-     //初始化数据
+    //初始化数据
     private void initdata() {
         for (int i = 0; i < 40; i++) {
-            roomNumber.add("房间"+(i+1));
+            roomNumber.add("房间" + (i + 1));
             rentSituatoin.add("未出租");
         }
         data = new ArrayList<>();
@@ -206,27 +222,34 @@ public class HomeFragment extends BaseFragment {
         data.add("竟不是小米乐视！看水抢了骁龙821首发了！！！");
 
     }
-    private static class ImageHandler extends Handler{
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        ButterKnife.reset(this);
+    }
+
+    private static class ImageHandler extends Handler {
         //请求更新显示的view
         protected static final int MSG_UPDATE_IMAGE = 1;
         //请求暂停轮播
         protected static final int MSG_KEEP_SILENT = 2;
         //请求恢复轮播
-        protected static final int MSG_PAGE_SILENT =3;
+        protected static final int MSG_PAGE_SILENT = 3;
         /*
         记录最新的页号，当用户手动滑动时需要记录新页号，否则会使轮播的页面出错。
     例如当前如果在第一页，本来准备播放的是第二页，而这时候用户滑动到了末页，
     则应该播放的是第一页，如果继续按照原来的第二页播放，则逻辑上有问题。
          */
-        protected  static final int MSG_PAGE_CHANGED=4;
+        protected static final int MSG_PAGE_CHANGED = 4;
 
         //轮播间隔时间
         protected static final long MSG_DELAY = 3000;
         //使用弱引用避免handler泄露
         private WeakReference<HomeFragment> weakReference;
-        private int currentItem =0;
+        private int currentItem = 0;
 
-        protected ImageHandler(WeakReference<HomeFragment> wk){
+        protected ImageHandler(WeakReference<HomeFragment> wk) {
             weakReference = wk;
         }
 
@@ -234,32 +257,32 @@ public class HomeFragment extends BaseFragment {
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
             HomeFragment fragment = weakReference.get();
-            if (fragment ==null){
+            if (fragment == null) {
                 return;//活动已经回收，无需再处理ui
             }
             //检查消息队列并移除未发送的消息，
             // 这是为了避免在复杂环境下消息出现重复等为题
-            if (fragment.handler.hasMessages(MSG_UPDATE_IMAGE) && !isFrist){
+            if (fragment.handler.hasMessages(MSG_UPDATE_IMAGE) && !isFrist) {
                 fragment.handler.removeMessages(MSG_UPDATE_IMAGE);
                 isFrist = false;
             }
-            switch (msg.what){
+            switch (msg.what) {
                 case MSG_UPDATE_IMAGE:
                     currentItem++;
                     fragment.vp.setCurrentItem(currentItem);
-                    fragment.handler.sendEmptyMessageDelayed(MSG_UPDATE_IMAGE,MSG_DELAY);
-                    isFrist =false;
+                    fragment.handler.sendEmptyMessageDelayed(MSG_UPDATE_IMAGE, MSG_DELAY);
+                    isFrist = false;
                     break;
                 case MSG_KEEP_SILENT:
                     //只要不发送消息就暂停
                     break;
                 case MSG_PAGE_SILENT:
-                    fragment.handler.sendEmptyMessageDelayed(MSG_UPDATE_IMAGE,MSG_DELAY);
-                    isFrist =false;
+                    fragment.handler.sendEmptyMessageDelayed(MSG_UPDATE_IMAGE, MSG_DELAY);
+                    isFrist = false;
                     break;
                 case MSG_PAGE_CHANGED:
-                    currentItem =msg.arg1;
-                    isFrist =false;
+                    currentItem = msg.arg1;
+                    isFrist = false;
                     break;
                 default:
                     break;
