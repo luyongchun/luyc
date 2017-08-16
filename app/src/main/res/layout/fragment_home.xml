@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.sunsky.marqueeview.MarqueeView
+        android:id="@+id/marqueeView"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:background="@color/main_gray"
+        android:layout_centerVertical="true"
+        app:animDuration="1500"
+        android:padding="5dp"
+        app:interval="3000"
+        android:layout_gravity="center_horizontal"
+        app:isSetAlphaAnim="true" />
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        >
+        <android.support.v4.view.ViewPager
+            android:id="@+id/vp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="130dp"
+        android:background="@mipmap/bg"
+        >
+        <ImageView
+            android:id="@+id/iv_touch_lock"
+            android:layout_centerHorizontal="true"
+            style="@style/home_picture_big"
+            android:src="@mipmap/lock"
+            />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_alignParentBottom="true"
+            >
+            <ImageView
+                android:id="@+id/iv_open_door_permission"
+                style="@style/home_picture_small"
+                android:src="@mipmap/open_door"
+                />
+            <ImageView
+                android:id="@+id/iv_rent_situation"
+                style="@style/home_picture_small"
+                android:src="@mipmap/rent"
+                />
+            <ImageView
+                android:id="@+id/iv_pay_rent"
+                style="@style/home_picture_small"
+                android:src="@mipmap/rent_pay"
+                />
+            <ImageView
+                android:id="@+id/iv_safety_monitoring"
+                style="@style/home_picture_small"
+                android:src="@mipmap/safety_monitoring"
+                />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:background="@color/main_gray"
+        >
+
+        <ImageView
+            android:id="@+id/iv_xiaoqu"
+            android:layout_width="30dp"
+            android:layout_height="match_parent"
+            android:src="@mipmap/more"
+            android:padding="5dp"
+            android:scaleType="fitXY"
+            android:layout_marginRight="10dp"
+            android:layout_alignParentRight="true"
+            />
+
+        <TextView
+            android:id="@+id/tv_village_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="小区名称"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true" />
+    </RelativeLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/gray_ii"
+        >
+        <com.luyc.bnd.myapplication.view.MyGridViews
+            android:id="@+id/gridView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:numColumns="3"
+            android:layout_margin="5dp"
+            android:verticalSpacing="5dp"
+            android:horizontalSpacing="5dp"
+            android:fadeScrollbars="true"
+            />
+    </ScrollView>
+
+
+</LinearLayout>

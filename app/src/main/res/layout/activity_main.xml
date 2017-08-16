@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.luyc.bnd.myapplication.MainActivity">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/colorPrimaryDark"
+        >
+        <ImageView
+            android:id="@+id/iv_phone"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@mipmap/phone"
+            />
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="吉吉居"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:gravity="center"
+            />
+        <ImageView
+            android:id="@+id/iv_massage"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@mipmap/massage"
+            />
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        >
+
+        <FrameLayout
+            android:id="@+id/fl_mainframelayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="60dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true">
+
+            <TextView
+                android:layout_width="20dp"
+                android:layout_height="match_parent"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/main_bottom_left_bg" />
+
+            <RadioGroup
+                android:id="@+id/rg"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:background="@drawable/main_rb_bg"
+                android:layout_alignParentBottom="true">
+
+                <RadioButton
+                    android:id="@+id/rb_home"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="房管"
+                    android:checked="true"
+                    android:layout_marginLeft="30dp"
+                    style="@style/RadiaButton"
+                    android:drawableTop="@drawable/rb_home_bg_select" />
+
+                <RadioButton
+                    android:id="@+id/rb_service"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="服务"
+                    style="@style/RadiaButton"
+                    android:drawableTop="@drawable/rb_service_bg_select" />
+
+                <RadioButton
+                    android:id="@+id/rb_my"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="我的"
+                    style="@style/RadiaButton"
+                    android:layout_marginRight="30dp"
+                    android:drawableTop="@drawable/rb_my_bg_select" />
+            </RadioGroup>
+
+            <TextView
+                android:layout_width="20dp"
+                android:layout_height="match_parent"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/main_bottom_right_bg" />
+        </LinearLayout>
+    </RelativeLayout>
+
+
+</LinearLayout>

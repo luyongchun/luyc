@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:background="@color/white_ii"
+    android:layout_width="200dp"
+    android:layout_height="match_parent">
+    <ImageView
+        android:id="@+id/iv_service_bg"
+        android:layout_width="match_parent"
+        android:scaleType="fitXY"
+        android:layout_marginRight="5dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="5dp"
+        android:layout_height="100dp"
+        android:src="@mipmap/banner1"
+        />
+    <TextView
+        android:id="@+id/tv_room_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:singleLine="true"
+        android:layout_marginRight="5dp"
+        android:layout_marginLeft="5dp"
+        android:text="海蒂大夏300#客厅"
+        style="@style/myText"
+        />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginLeft="5dp"
+        android:background="@mipmap/shopping"
+        >
+        <TextView
+            android:id="@+id/tv_room_price"
+            android:layout_width="110dp"
+            android:gravity="center"
+            android:layout_height="match_parent"
+            android:singleLine="true"
+            android:text="房间价格"
+            style="@style/myText" />
+
+    </RelativeLayout>
+
+</LinearLayout>
