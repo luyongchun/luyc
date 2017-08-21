@@ -6,7 +6,8 @@
     <color name="black">#383637</color>
     <color name="blue">#3171ac</color>
     <color name="blue_ii">#84c2fc</color>
-    <color name="main_gray">#888485</color>
+    <!--<color name="main_gray">#888485</color>-->
+    <color name="main_gray">#4D64D6</color>
     <color name="main_blue">#4D64D6</color>
     <color name="gray_ii">#E2E0E1</color>
     <color name="white">#FFFFFF</color>

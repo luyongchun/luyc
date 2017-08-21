@@ -1,6 +1,7 @@
 package com.luyc.bnd.myapplication;
 
 import android.app.FragmentTransaction;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.KeyEvent;
@@ -58,6 +59,8 @@ public class MainActivity extends BaseActivity {
         ButterKnife.inject(this);
         toast = Toast.makeText(this, "再按一次退出程序", Toast.LENGTH_SHORT);
 
+        initViewByRadioButton();
+
         if (homeFragment == null) {
             homeFragment = new HomeFragment();
         }
@@ -65,6 +68,22 @@ public class MainActivity extends BaseActivity {
         ft.replace(R.id.fl_mainframelayout, homeFragment);
         ft.commit();
         initView();
+    }
+
+    private void initViewByRadioButton() {
+        Drawable homeDrawable = getResources().getDrawable(R.drawable.rb_home_bg_select);
+        setDrawable(rbHome,homeDrawable);
+
+        Drawable serviceDrawable = getResources().getDrawable(R.drawable.rb_service_bg_select);
+        setDrawable(rbService,serviceDrawable);
+
+        Drawable myDrawable = getResources().getDrawable(R.drawable.rb_my_bg_select);
+        setDrawable(rbMy,myDrawable);
+    }
+
+    private void setDrawable(RadioButton radioButton,Drawable homeDrawable) {
+        homeDrawable.setBounds(0,0,120,100);
+        radioButton.setCompoundDrawables(null,homeDrawable,null,null);
     }
 
     private void initView() {

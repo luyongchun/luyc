@@ -34,6 +34,7 @@ import butterknife.InjectView;
 
 public class HomeFragment extends BaseFragment {
 
+
     @InjectView(R.id.marqueeView)
     MarqueeView marqueeView;
     @InjectView(R.id.vp)
@@ -72,6 +73,7 @@ public class HomeFragment extends BaseFragment {
         if (view == null) {
             view = inflater.inflate(R.layout.fragment_home, container, false);
         }
+        //Log.e(TAG, "onCreateView: ", );
         ButterKnife.inject(this, view);
         isFrist = true;
         initdata();
@@ -195,11 +197,6 @@ public class HomeFragment extends BaseFragment {
         super.onPause();
         marqueeView.stopFlipping();
     }
-
-    private int[] getImages() {
-        return new int[]{R.mipmap.safety_monitoring, R.mipmap.banner1, R.mipmap.massage, R.mipmap.lock};
-    }
-
 
     //初始化数据
     private void initdata() {
