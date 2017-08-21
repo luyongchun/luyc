@@ -85,7 +85,7 @@
                     android:layout_height="wrap_content"
                     android:text="服务"
                     style="@style/RadiaButton"
-                    android:drawableTop="@drawable/rb_service_bg_select" />
+                    android:drawableTop="@mipmap/ic_launcher" />
 
                 <RadioButton
                     android:id="@+id/rb_my"
@@ -94,7 +94,7 @@
                     android:text="我的"
                     style="@style/RadiaButton"
                     android:layout_marginRight="30dp"
-                    android:drawableTop="@drawable/rb_my_bg_select" />
+                    android:drawableTop="@mipmap/ic_launcher" />
             </RadioGroup>
 
             <TextView
